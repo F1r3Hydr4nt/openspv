@@ -1,18 +1,34 @@
 /* global describe,it */
 'use strict'
 import should from 'should'
-import { Interp } from '../lib/interp'
-import { Tx } from '../lib/tx'
-import { Script } from '../lib/script'
 import { Bn } from '../lib/bn'
+import { Interp } from '../lib/interp'
 import { KeyPair } from '../lib/key-pair'
+import { Script } from '../lib/script'
 import { Sig } from '../lib/sig'
-import bitcoindScriptValid from './vectors/bitcoind/script_valid.json'
-import bitcoindScriptInvalid from './vectors/bitcoind/script_invalid.json'
+import { Tx } from '../lib/tx'
 import bitcoinABCScriptTests from './vectors/bitcoin-abc/script_tests.json'
 import bitcoinSVScriptTests from './vectors/bitcoin-sv/script_tests.json'
+import bitcoindScriptInvalid from './vectors/bitcoind/script_invalid.json'
+import bitcoindScriptValid from './vectors/bitcoind/script_valid.json'
 
 describe('Interp', function () {
+  // Post Genesis
+  /*
+  MAX_OPS_PER_SCRIPT_BEFORE_GENESIS
+MAX_SCRIPT_NUM_LENGTH_AFTER_GENESIS
+MAX_STACK_ELEMENTS_BEFORE_GENESIS
+MAX_SCRIPT_ELEMENT_SIZE_BEFORE_GENESIS
+MAX_PUBKEYS_PER_MULTISIG_BEFORE_GENESIS
+MAX_TX_SIGOPS_COUNT_BEFORE_GENESIS
+MAX_TX_SIZE_CONSENSUS_BEFORE_GENESIS
+ DEFAULT_MAX_TX_SIZE_POLICY_AFTER_GENESIS
+ MAX_TX_SIZE_POLICY_BEFORE_GENESIS
+
+TEST_GENESIS_STANDARD_TX
+TEST_GENESIS_NONSTANDARD_TX
+TEST_GENESIS_P2SH_TX
+*/
   it('should make a new interp', function () {
     let interp = new Interp()
     ;(interp instanceof Interp).should.equal(true)
